@@ -23,10 +23,11 @@ window.fn.load = function(page) {
   content.load(page)
     .then(menu.close.bind(menu));
 };
-
-
-
-document.addEventListener('init',function(event){
+//=========================================================================================
+//List
+//=========================================================================================
+document.addEventListener('init',function(event)
+{
     if(event.target.id == "home"){
         openDB(); 
         getItems();
@@ -96,4 +97,60 @@ function deleteItem(ID)
     db.transaction(function(tx){
         tx.executeSql("DELETE FROM items WHERE ID=?", [ID], onSuccess, onError);
     });
+}
+//=========================================================================================
+//=========================================================================================
+
+//=========================================================================================
+//Animations
+//=========================================================================================
+
+function myMove()
+{
+   
+
+    var elem = document.getElementById("myAnimation");   
+    var pos = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == 80) {
+        clearInterval(id);
+      } else {
+        pos++; 
+        elem.style.top = pos + '%'; 
+        //elem.style.left = pos + '%'; 
+      }
+    }
+}
+
+function myMoveAny(x)
+{
+   
+
+    var elem = x   
+    var pos = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == 80) {
+        clearInterval(id);
+      } else {
+        pos++; 
+        elem.style.top = pos + '%'; 
+        //elem.style.left = pos + '%'; 
+      }
+    }
+}
+
+function ChangeImageToBlue(x)
+{
+    x.style.backgroundColor = "blue";
+}
+function ChangeImageToRed()
+{
+    document.getElementById("myAnimation").style.backgroundColor = "red";
+}
+
+function ChangeImageToPink()
+{
+    document.getElementById("cubetwo").style.backgroundColor = "pink";
 }
